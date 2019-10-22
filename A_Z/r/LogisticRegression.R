@@ -19,6 +19,7 @@ test_set[, 1:2] = scale(test_set[,1:2])
 classifier <- glm(formula = Purchased ~.,
                   family = binomial,
                   data = training_set)
+
 summary(classifier)
 
 prob_pred <- predict(classifier, type= 'response', newdata = test_set[-3])
@@ -40,7 +41,7 @@ grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
 prob_set = predict(classifier, type='response', newdata = grid_set)
 y_grid = ifelse(prob_set>0.5, 1, 0)
-plot(set[,3],
+plot(set[,-3],
      main = "Logistic Regression (Training set)",
      xlab = 'Age', ylab = 'Estimated Salary',
      xlim = range(X1), ylim = range(X2))
@@ -58,7 +59,7 @@ grid_set = expand.grid(X1, X2)
 colnames(grid_set) = c('Age', 'EstimatedSalary')
 prob_set = predict(classifier, type='response', newdata = grid_set)
 y_grid = ifelse(prob_set>0.5, 1, 0)
-plot(set[,3],
+plot(set[,-3],
      main = "Logistic Regression (Test set)",
      xlab = 'Age', ylab = 'Estimated Salary',
      xlim = range(X1), ylim = range(X2))
@@ -66,3 +67,4 @@ plot(set[,3],
 contour(X1, X2, matrix(as.numeric(y_grid), length(X1), length(X2)), add=TRUE)
 points(grid_set, pch='.', col= ifelse(y_grid==1, 'springgreen3', 'tomato'))
 points(set, pch=21, bg= ifelse(set[,3] ==1, 'green4', 'red3'))
+

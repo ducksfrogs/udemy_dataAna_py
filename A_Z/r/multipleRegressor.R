@@ -35,3 +35,4 @@ summary(regressor)
 
 regressor <- lm(formula = Profit ~ R.D.Spend + Marketing.Spend , data = training_set)
 summary(regressor)
+

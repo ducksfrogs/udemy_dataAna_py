@@ -9,7 +9,6 @@ split = sample.split(dataset$Purchased, SplitRatio=0.75)
 training_set = subset(dataset, split==TRUE)
 test_set = subset(dataset, split==FALSE)
 
-
 #Feature scaling
 
 training_set[, 1:2] = scale(training_set[,1:2])
@@ -18,7 +17,6 @@ test_set[, 1:2] = scale(test_set[,1:2])
 #make classifier
 library(class)
 #K-NN to the trainint set and Predicting the Test set
-
  
 y_pred = knn(train = training_set[, -3],
              test = test_set[,-3],
@@ -42,7 +40,7 @@ y_grid =  knn(train = training_set[, -3],
              k=5)
 
 plot(set[,-3],
-     main = "Logistic Regression (Training set)",
+     main = "KNN Regression (Training set)",
      xlab = 'Age', ylab = 'Estimated Salary',
      xlim = range(X1), ylim = range(X2))
 

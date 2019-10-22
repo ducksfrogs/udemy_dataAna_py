@@ -1,6 +1,5 @@
 #SVR
 
-
 dataset  <- read.csv("../data/Position_Salaries.csv", header = T)
 dataset <- dataset[2:3]
 
