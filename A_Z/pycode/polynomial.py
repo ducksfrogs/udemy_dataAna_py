@@ -22,14 +22,23 @@ lin_reg.fit(X, y)
 
 from sklearn.preprocessing import PolynomialFeatures
 
-poly_leg = PolynomialFeatures(degree=2)
+poly_leg = PolynomialFeatures(degree=4)
 X_poly = poly_leg.fit_transform(X)
 lin_reg2 = LinearRegression()
 
 lin_reg2.fit(X_poly, y)
 
+#plt.scatter(X, y, color='red')
+#plt.plot(X, lin_reg.predict(X), color='blue')
+#plt.title("Truth or bruff")
+#plt.xlabel('Postition')
+#plt.ylabel("salary")
+#plt.show()
+
+
+print(lin_reg.predict([6.5]))
 plt.scatter(X, y, color='red')
-plt.plot(X, lin_reg.predict(X), color='blue')
+plt.plot(X, lin_reg2.predict(poly_leg.fit_transform(X)), color='blue')
 plt.title("Truth or bruff")
 plt.xlabel('Postition')
 plt.ylabel("salary")
